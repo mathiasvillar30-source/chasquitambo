@@ -52,7 +52,6 @@
         ? '<figure class="atractivo__foto"' + tope + ">" +
             '<img src="img/' + a.foto + '" alt="' + a.nombre + ", " + a.distancia + '"' +
             ' loading="lazy" onerror="this.closest(\'figure\').remove()">' +
-            (a.credito ? '<figcaption>Foto: ' + a.credito + "</figcaption>" : "") +
           "</figure>"
         : "";
 
@@ -65,7 +64,6 @@
 
       return (
         '<li class="atractivo' + (a.destacado ? " atractivo--destacado" : "") + '">' +
-          '<span class="atractivo__icono" aria-hidden="true">' + a.icono + "</span>" +
           '<div class="atractivo__cuerpo">' +
             '<h3 class="atractivo__nombre">' + a.nombre + apodo + "</h3>" +
             '<p class="atractivo__donde">' + a.distancia + "</p>" +

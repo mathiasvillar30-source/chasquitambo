@@ -433,17 +433,11 @@ a { color: inherit; }
   align-items: start;
 }
 .atractivo {
-  display: grid; grid-template-columns: 48px 1fr; gap: 1rem; align-items: start;
   background: #fff; border: 1px solid var(--linea); border-radius: var(--radio);
   padding: 1.4rem 1.5rem; box-shadow: var(--sombra);
   transition: transform .2s, box-shadow .2s;
 }
 .atractivo:hover { transform: translateY(-3px); box-shadow: var(--sombra-alta); }
-.atractivo__icono {
-  display: grid; place-items: center;
-  width: 48px; height: 48px; border-radius: 12px;
-  background: var(--crema-hondo); font-size: 1.35rem;
-}
 .atractivo__nombre { font-size: 1.1rem; margin-bottom: .18rem; }
 .atractivo__apodo {
   display: block; font-family: var(--sans); font-size: .84rem;
@@ -469,10 +463,6 @@ a { color: inherit; }
 }
 .atractivo__foto img {
   display: block; width: 100%; height: auto; max-height: 340px; object-fit: cover;
-}
-.atractivo__foto figcaption {
-  font-size: .74rem; color: var(--tinta-suave);
-  padding: .45rem .1rem 0; font-style: italic;
 }
 
 /* Leyenda plegable: no roba espacio a quien solo quiere saber dónde parar. */
