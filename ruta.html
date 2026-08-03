@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La ruta Pativilca–Huaraz — del mar a los 4,050 m | Parada Chasquitambo</title>
+<meta name="description" content="Los 200 km de Pativilca a Huaraz en perfil de altitud: Caral, la Fortaleza de Paramonga, Chasquitambo, la laguna de Conococha y las Puyas de Raimondi. Dónde parar y por qué.">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/ruta.css">
+</head>
+<body>
+
+<a class="saltar" href="#perfil">Ir al perfil de la ruta</a>
+
+<header class="nav" id="nav">
+  <div class="contenedor nav__interior">
+    <a class="marca" href="index.html">
+      <span class="marca__km">49</span>
+      <span class="marca__texto">Parada<br><strong>Chasquitambo</strong></span>
+    </a>
+
+    <button class="nav__menu" id="nav-menu" aria-expanded="false" aria-controls="nav-enlaces">
+      <span class="nav__barras" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="nav__menu-texto">Menú</span>
+    </button>
+
+    <nav class="nav__enlaces" id="nav-enlaces">
+      <a href="index.html#que-ver">Qué ver</a>
+      <a href="index.html#directorio">Dónde parar</a>
+      <a href="index.html#festival">Fiestas</a>
+      <a href="index.html#negocios" class="nav__cta">Para negocios</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Portada ────────────────────────────────────────── -->
+  <section class="rutaHero">
+    <div class="contenedor">
+      <p class="seccion__kicker">La ruta</p>
+      <h1 class="rutaHero__titulo">Del mar a los 4,050&nbsp;metros<br><em>en 121 kilómetros.</em></h1>
+      <p class="rutaHero__bajada">
+        Casi todo el turismo terrestre que va a la Cordillera Blanca hace este camino
+        sin saber lo que está atravesando: cinco mil años de historia en la costa, una
+        subida de las más bruscas del país, y el punto exacto donde nace uno de los
+        ríos más importantes del Perú.
+      </p>
+      <div class="rutaHero__cifras">
+        <div class="cifra"><strong>200</strong><span>km de Pativilca a Huaraz</span></div>
+        <div class="cifra"><strong>3,950</strong><span>metros de desnivel</span></div>
+        <div class="cifra"><strong>6-7</strong><span>horas desde Lima</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Perfil de altitud ──────────────────────────────── -->
+  <section class="seccion seccion--perfil" id="perfil">
+    <div class="contenedor">
+      <h2 class="seccion__titulo">El perfil de la subida</h2>
+      <p class="seccion__intro">
+        Toca cualquier punto para ver qué hay ahí. La línea es aproximada: sirve para
+        entender la forma del camino, no para navegar.
+      </p>
+
+      <figure class="perfil">
+        <div class="perfil__lienzo">
+          <svg id="grafico" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid meet"
+               role="img" aria-label="Perfil de altitud de la carretera Pativilca-Huaraz"></svg>
+        </div>
+        <figcaption class="perfil__pie">
+          Altitudes aproximadas. Kilómetros contados desde el desvío de Pativilca.
+        </figcaption>
+      </figure>
+
+      <div class="detalle" id="detalle" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ── Los dos ríos ───────────────────────────────────── -->
+  <section class="seccion seccion--rios">
+    <div class="contenedor">
+      <p class="seccion__kicker">El hilo de la ruta</p>
+      <h2 class="seccion__titulo">Subes por un río, bajas por otro</h2>
+      <div class="rios">
+        <article class="rio rio--sube">
+          <h3>Río Fortaleza</h3>
+          <p class="rio__tramo">Km 0 → 121 · subiendo</p>
+          <p>
+            Nace en las alturas y desemboca junto a la Fortaleza de Paramonga, que le
+            dio el nombre. La carretera lo remonta desde el mar: su valle es el que
+            hace verde a Chasquitambo en medio del cerro pelado, y el que da la palta,
+            el mango y la sandía.
+          </p>
+        </article>
+
+        <div class="rios__divisoria" aria-hidden="true">
+          <span>4,050 m</span>
+          <p>Conococha<br>la divisoria</p>
+        </div>
+
+        <article class="rio rio--baja">
+          <h3>Río Santa</h3>
+          <p class="rio__tramo">Km 121 → 200 · bajando</p>
+          <p>
+            Nace en la laguna de Conococha y corre 200 km hacia el norte por el
+            Callejón de Huaylas, entre la Cordillera Blanca y la Negra, hasta el
+            Pacífico. Desde Conococha hasta Huaraz vas siguiendo su cauce recién nacido.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Antes del desvío ───────────────────────────────── -->
+  <section class="seccion seccion--antes">
+    <div class="contenedor">
+      <p class="seccion__kicker">Antes de subir</p>
+      <h2 class="seccion__titulo">Lo que te pierdes en la Panamericana</h2>
+      <p class="seccion__intro">
+        Todo esto queda sobre la costa, antes del desvío de Pativilca. La mayoría pasa
+        de largo a 90 km/h.
+      </p>
+      <div class="antes" id="antes"></div>
+    </div>
+  </section>
+
+  <!-- ── Altura ─────────────────────────────────────────── -->
+  <section class="seccion seccion--altura">
+    <div class="contenedor">
+      <div class="altura">
+        <p class="seccion__kicker seccion__kicker--claro">Lo que nadie te dice</p>
+        <h2 class="altura__titulo">Subes 3,300 metros en 72 kilómetros</h2>
+        <p>
+          Entre Chasquitambo (750&nbsp;m) y Conococha (4,050&nbsp;m) hay poco más de una
+          hora de carretera. Es un salto brutal, y el cuerpo lo nota: dolor de cabeza,
+          falta de aire, náuseas. Le dicen soroche.
+        </p>
+        <ul class="altura__lista">
+          <li><strong>Come antes de subir</strong>, no arriba. En Chasquitambo, no en Conococha.</li>
+          <li><strong>Comida ligera.</strong> Digerir a 4,000 m consume oxígeno que te hace falta.</li>
+          <li><strong>Agua, mucha.</strong> El aire seco de altura deshidrata sin que lo sientas.</li>
+          <li><strong>Nada de alcohol</strong> el día de la subida.</li>
+          <li><strong>Al llegar a Huaraz, un día tranquilo</strong> antes de cualquier laguna o trekking.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Cierre ─────────────────────────────────────────── -->
+  <section class="seccion seccion--cierre">
+    <div class="contenedor cierre">
+      <h2 class="seccion__titulo">Y en el kilómetro 49, el pueblo</h2>
+      <p>
+        Chasquitambo lleva el nombre del chasqui: el mensajero inca que corría los
+        caminos del imperio, y del tambo donde paraba a descansar y comer antes de
+        seguir. Seiscientos años después la carretera pasa por el mismo sitio, y el
+        viajero rumbo a Huaraz hace exactamente lo mismo.
+      </p>
+      <a class="boton boton--principal" href="index.html#directorio">Ver dónde parar en Chasquitambo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie__interior">
+    <div class="pie__marca">
+      <span class="marca__km marca__km--pie">49</span>
+      <p>
+        <strong>Parada Chasquitambo</strong><br>
+        Km 49, carretera Pativilca–Huaraz<br>
+        Distrito de Colquioc, provincia de Bolognesi, Áncash
+      </p>
+    </div>
+    <div class="pie__nota">
+      <p>
+        Altitudes y distancias aproximadas, reunidas de fuentes públicas. Si conoces
+        la ruta y ves un dato equivocado, se corrige.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/ruta-datos.js"></script>
+<script src="js/ruta.js"></script>
+</body>
+</html>

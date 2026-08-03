@@ -305,8 +305,10 @@ a { color: inherit; }
 
 .ruta__nota {
   font-size: .92rem; color: var(--tinta-suave); font-style: italic;
-  border-left: 3px solid var(--ambar); padding-left: 1rem; max-width: 38rem; margin: 0;
+  border-left: 3px solid var(--ambar); padding-left: 1rem; max-width: 38rem;
+  margin: 0 0 1.8rem;
 }
+.ruta__mas { margin: 0; }
 
 @media (max-width: 700px) {
   .ruta { grid-template-columns: 1fr; gap: 1.5rem; }
