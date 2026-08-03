@@ -39,9 +39,12 @@
         : "";
 
       /* Si el archivo todavía no está en img/, se quita el bloque entero:
-         mejor sin foto que con el ícono de imagen rota. */
+         mejor sin foto que con el ícono de imagen rota.
+         anchoMax topa las imágenes de baja resolución a su tamaño nativo,
+         para que no se vean borrosas al ampliarlas. */
+      const tope = a.anchoMax ? ' style="max-width:' + a.anchoMax + 'px"' : "";
       const foto = a.foto
-        ? '<figure class="atractivo__foto">' +
+        ? '<figure class="atractivo__foto"' + tope + ">" +
             '<img src="img/' + a.foto + '" alt="' + a.nombre + ", " + a.distancia + '"' +
             ' loading="lazy" onerror="this.closest(\'figure\').remove()">' +
             (a.credito ? '<figcaption>Foto: ' + a.credito + "</figcaption>" : "") +

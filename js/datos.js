@@ -140,6 +140,18 @@ const ATRACTIVOS = [
       "Cuenta la leyenda que era un hombre alto y fornido que hacía mucho daño a los pobladores. Cansados de su maldad, decidieron acabar con él. Lo persiguieron, y huyendo trepó el cerro — pero antes de que lo alcanzaran, los dioses lo castigaron convirtiéndolo en piedra, mostrando las nalgas por toda la eternidad. Es una historia de justicia divina muy propia de los Andes: al malvado no se le mata, se le deja de burla para siempre. Hoy las parejas se acercan a la roca buscando fertilidad y prosperidad.",
   },
   {
+    nombre: "El arco de bienvenida",
+    icono: "🛣",
+    distancia: "Entrada del pueblo, sobre la vía",
+    foto: "arco.jpg",
+    credito: "Mathias Villar",
+    /* La imagen es de baja resolución: se muestra a tamaño nativo para que
+       no se vea borrosa al ampliarla. */
+    anchoMax: 460,
+    texto:
+      "El arco azul que cruza la carretera y anuncia el pueblo. En sus columnas está el lema completo: «Tierra prodigiosa de amor y eterno sol». Es la señal de que llegaste — y de que es momento de bajar la velocidad.",
+  },
+  {
     nombre: "Cerro Pescado",
     icono: "⛰",
     distancia: "Visible desde el pueblo",
