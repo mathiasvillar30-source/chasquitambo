@@ -129,6 +129,11 @@ const ATRACTIVOS = [
     icono: "🪨",
     distancia: "Km 48, a pie de carretera",
     destacado: true,
+    /* Ya está conectada: basta con dejar el archivo en img/siki-rumi.jpg.
+       Si el archivo todavía no existe, la ficha se muestra sin foto — no
+       aparece imagen rota. */
+    foto: "siki-rumi.jpg",
+    credito: "Mathias Villar",
     texto:
       "Del quechua siki (nalga) y rumi (piedra): la piedra de las nalgas. Una formación en la ladera con una silueta inconfundible, y el punto más fotografiado del valle. Se ve desde la vía — no hay que desviarse ni caminar.",
     historia:

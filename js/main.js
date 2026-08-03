@@ -38,9 +38,12 @@
         ? '<span class="atractivo__apodo">«' + a.apodo + "»</span>"
         : "";
 
+      /* Si el archivo todavía no está en img/, se quita el bloque entero:
+         mejor sin foto que con el ícono de imagen rota. */
       const foto = a.foto
         ? '<figure class="atractivo__foto">' +
-            '<img src="img/' + a.foto + '" alt="' + a.nombre + ', ' + a.distancia + '" loading="lazy">' +
+            '<img src="img/' + a.foto + '" alt="' + a.nombre + ", " + a.distancia + '"' +
+            ' loading="lazy" onerror="this.closest(\'figure\').remove()">' +
             (a.credito ? '<figcaption>Foto: ' + a.credito + "</figcaption>" : "") +
           "</figure>"
         : "";
