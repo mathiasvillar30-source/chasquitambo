@@ -33,7 +33,12 @@
     const cont = document.getElementById("atractivos");
     if (!cont) return;
 
-    cont.innerHTML = ATRACTIVOS.map(function (a) {
+    /* Solo se muestran los atractivos que ya tienen foto. Los demás siguen
+       definidos abajo en datos.js con su texto listo: en cuanto se les
+       agregue el campo foto vuelven a aparecer solos. */
+    const conFoto = ATRACTIVOS.filter(function (a) { return a.foto; });
+
+    cont.innerHTML = conFoto.map(function (a) {
       const apodo = a.apodo
         ? '<span class="atractivo__apodo">«' + a.apodo + "»</span>"
         : "";
