@@ -419,11 +419,54 @@ a { color: inherit; }
   background: var(--crema-hondo); font-size: 1.35rem;
 }
 .atractivo__nombre { font-size: 1.1rem; margin-bottom: .18rem; }
+.atractivo__apodo {
+  display: block; font-family: var(--sans); font-size: .84rem;
+  font-weight: 400; font-style: italic; color: var(--tinta-suave);
+  letter-spacing: 0;
+}
 .atractivo__donde {
   font-size: .76rem; letter-spacing: .05em; text-transform: uppercase;
   color: var(--terracota); font-weight: 600; margin-bottom: .5rem;
 }
 .atractivo__texto { font-size: .92rem; color: var(--tinta-suave); margin: 0; }
+
+/* El destacado ocupa el ancho completo de la grilla y muestra foto. */
+.atractivo--destacado {
+  grid-column: 1 / -1;
+  background: linear-gradient(160deg, #fff, var(--crema));
+  border-color: rgba(224,133,38,.35);
+}
+
+.atractivo__foto {
+  margin: .2rem 0 .9rem; border-radius: 10px; overflow: hidden;
+  background: var(--crema-hondo);
+}
+.atractivo__foto img {
+  display: block; width: 100%; height: auto; max-height: 340px; object-fit: cover;
+}
+.atractivo__foto figcaption {
+  font-size: .74rem; color: var(--tinta-suave);
+  padding: .45rem .1rem 0; font-style: italic;
+}
+
+/* Leyenda plegable: no roba espacio a quien solo quiere saber dónde parar. */
+.leyenda { margin-top: .9rem; }
+.leyenda summary {
+  cursor: pointer; list-style: none;
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .82rem; font-weight: 600; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--terracota);
+  padding: .4rem .8rem; border: 1px dashed rgba(190,84,48,.4);
+  border-radius: 999px; transition: background .18s, border-color .18s;
+}
+.leyenda summary::-webkit-details-marker { display: none; }
+.leyenda summary::before { content: "▸"; transition: transform .2s; }
+.leyenda[open] summary::before { transform: rotate(90deg); }
+.leyenda summary:hover { background: rgba(190,84,48,.06); border-color: var(--terracota); }
+.leyenda p {
+  margin: .9rem 0 0; font-size: .93rem; color: var(--tinta-suave);
+  border-left: 3px solid var(--ambar); padding-left: 1rem; font-style: italic;
+}
 
 /* ── Fiestas ────────────────────────────────────────────── */
 

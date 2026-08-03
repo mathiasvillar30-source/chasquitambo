@@ -125,10 +125,14 @@ const RUTA = [
 const ATRACTIVOS = [
   {
     nombre: "Siki Rumi",
+    apodo: "el poto de piedra",
     icono: "🪨",
-    distancia: "Km 47–49, a pie de carretera",
+    distancia: "Km 48, a pie de carretera",
+    destacado: true,
     texto:
-      "Formación rocosa cuyo nombre viene del quechua qullqi rumi. Se ve desde la vía: no hay que desviarse ni caminar para conocerla.",
+      "Del quechua siki (nalga) y rumi (piedra): la piedra de las nalgas. Una formación en la ladera con una silueta inconfundible, y el punto más fotografiado del valle. Se ve desde la vía — no hay que desviarse ni caminar.",
+    historia:
+      "Cuenta la leyenda que era un hombre alto y fornido que hacía mucho daño a los pobladores. Cansados de su maldad, decidieron acabar con él. Lo persiguieron, y huyendo trepó el cerro — pero antes de que lo alcanzaran, los dioses lo castigaron convirtiéndolo en piedra, mostrando las nalgas por toda la eternidad. Es una historia de justicia divina muy propia de los Andes: al malvado no se le mata, se le deja de burla para siempre. Hoy las parejas se acercan a la roca buscando fertilidad y prosperidad.",
   },
   {
     nombre: "Cerro Pescado",

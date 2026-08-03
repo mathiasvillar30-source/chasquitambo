@@ -34,13 +34,33 @@
     if (!cont) return;
 
     cont.innerHTML = ATRACTIVOS.map(function (a) {
+      const apodo = a.apodo
+        ? '<span class="atractivo__apodo">«' + a.apodo + "»</span>"
+        : "";
+
+      const foto = a.foto
+        ? '<figure class="atractivo__foto">' +
+            '<img src="img/' + a.foto + '" alt="' + a.nombre + ', ' + a.distancia + '" loading="lazy">' +
+            (a.credito ? '<figcaption>Foto: ' + a.credito + "</figcaption>" : "") +
+          "</figure>"
+        : "";
+
+      const historia = a.historia
+        ? '<details class="leyenda">' +
+            "<summary>La leyenda</summary>" +
+            "<p>" + a.historia + "</p>" +
+          "</details>"
+        : "";
+
       return (
-        '<li class="atractivo">' +
+        '<li class="atractivo' + (a.destacado ? " atractivo--destacado" : "") + '">' +
           '<span class="atractivo__icono" aria-hidden="true">' + a.icono + "</span>" +
-          '<div>' +
-            '<h3 class="atractivo__nombre">' + a.nombre + "</h3>" +
+          '<div class="atractivo__cuerpo">' +
+            '<h3 class="atractivo__nombre">' + a.nombre + apodo + "</h3>" +
             '<p class="atractivo__donde">' + a.distancia + "</p>" +
+            foto +
             '<p class="atractivo__texto">' + a.texto + "</p>" +
+            historia +
           "</div>" +
         "</li>"
       );
