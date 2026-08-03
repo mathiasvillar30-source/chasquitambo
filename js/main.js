@@ -1,0 +1,248 @@
+/* Parada Chasquitambo — lógica de la landing.
+ * Sin dependencias: los datos llegan de js/datos.js por <script>, así que
+ * la web funciona abriendo index.html directo, sin servidor.
+ */
+
+(function () {
+  "use strict";
+
+  const ICONO_CATEGORIA = { hospedaje: "🛏", comida: "🍽", fruta: "🍉" };
+
+  /* ── Ruta ───────────────────────────────────────────── */
+
+  function pintarRuta() {
+    const lista = document.getElementById("ruta-lista");
+    if (!lista) return;
+
+    lista.innerHTML = RUTA.map(function (hito) {
+      return (
+        '<li class="hito' + (hito.esAqui ? " hito--aqui" : "") + '">' +
+          '<div class="hito__punto">km ' + hito.km + "</div>" +
+          '<div>' +
+            '<p class="hito__lugar">' + hito.lugar + "</p>" +
+            '<p class="hito__nota">' + hito.nota + "</p>" +
+          "</div>" +
+        "</li>"
+      );
+    }).join("");
+  }
+
+  /* ── Atractivos ─────────────────────────────────────── */
+
+  function pintarAtractivos() {
+    const cont = document.getElementById("atractivos");
+    if (!cont) return;
+
+    cont.innerHTML = ATRACTIVOS.map(function (a) {
+      return (
+        '<li class="atractivo">' +
+          '<span class="atractivo__icono" aria-hidden="true">' + a.icono + "</span>" +
+          '<div>' +
+            '<h3 class="atractivo__nombre">' + a.nombre + "</h3>" +
+            '<p class="atractivo__donde">' + a.distancia + "</p>" +
+            '<p class="atractivo__texto">' + a.texto + "</p>" +
+          "</div>" +
+        "</li>"
+      );
+    }).join("");
+  }
+
+  /* ── Fiestas ────────────────────────────────────────── */
+
+  /* Días que faltan para el próximo día/mes, saltando al año siguiente
+     si la fecha de este año ya pasó. */
+  function diasHasta(mes, dia) {
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    let objetivo = new Date(hoy.getFullYear(), mes - 1, dia);
+    if (objetivo < hoy) objetivo = new Date(hoy.getFullYear() + 1, mes - 1, dia);
+
+    return Math.round((objetivo - hoy) / 86400000);
+  }
+
+  function pintarProxima() {
+    const el = document.getElementById("proxima");
+    if (!el) return;
+
+    const conFecha = FIESTAS.filter(function (f) { return !f.porConfirmar; });
+    if (conFecha.length === 0) return;
+
+    const proxima = conFecha
+      .map(function (f) { return { fiesta: f, dias: diasHasta(f.mes, f.dia) }; })
+      .sort(function (a, b) { return a.dias - b.dias; })[0];
+
+    const d = proxima.dias;
+    const cuenta =
+      d === 0 ? "es hoy" :
+      d === 1 ? "es mañana" :
+      "faltan " + d + " días";
+
+    el.hidden = false;
+    el.innerHTML =
+      '<span class="proxima__etiqueta">Lo próximo</span>' +
+      '<p class="proxima__texto"><strong>' + proxima.fiesta.nombre + "</strong> — " +
+      proxima.fiesta.fecha + " en " + proxima.fiesta.lugar + "." +
+      '<span class="proxima__cuenta">' + cuenta + "</span></p>";
+  }
+
+  function pintarFiestas() {
+    const cont = document.getElementById("fiestas");
+    if (!cont) return;
+
+    cont.innerHTML = FIESTAS.map(function (f) {
+      return (
+        '<article class="fiesta' + (f.principal ? " fiesta--principal" : "") + '">' +
+          '<p class="fiesta__fecha' + (f.porConfirmar ? " fiesta__fecha--pendiente" : "") +
+            '">' + f.fecha + "</p>" +
+          '<h3 class="fiesta__nombre">' + f.nombre + "</h3>" +
+          '<p class="fiesta__lugar">' + f.lugar + "</p>" +
+          '<p class="fiesta__texto">' + f.texto + "</p>" +
+        "</article>"
+      );
+    }).join("");
+  }
+
+  /* ── Directorio ─────────────────────────────────────── */
+
+  function tieneContacto(n) {
+    return Boolean(n.whatsapp || n.telefono);
+  }
+
+  function pintarDatos(n) {
+    const datos = [];
+    if (n.horario) datos.push('<span class="dato">🕐 ' + n.horario + "</span>");
+    else datos.push('<span class="dato dato--pendiente">horario por confirmar</span>');
+
+    if (n.precio) datos.push('<span class="dato">💵 ' + n.precio + "</span>");
+    else datos.push('<span class="dato dato--pendiente">precio por confirmar</span>');
+
+    return datos.join("");
+  }
+
+  function pintarAcciones(n) {
+    if (!tieneContacto(n)) {
+      return '<span class="accion accion--inactiva">Contacto por confirmar</span>';
+    }
+
+    let html = "";
+    if (n.whatsapp) {
+      const msg = encodeURIComponent(
+        "Hola, los encontré en Parada Chasquitambo. Quisiera consultar por "
+      );
+      html +=
+        '<a class="accion accion--wa" target="_blank" rel="noopener" href="https://wa.me/' +
+        n.whatsapp + "?text=" + msg + '">WhatsApp</a>';
+    }
+    if (n.telefono) {
+      html +=
+        '<a class="accion accion--tel" href="tel:' + n.telefono + '">Llamar</a>';
+    }
+    return html;
+  }
+
+  function pintarImagen(n) {
+    if (n.foto) {
+      return '<img src="img/' + n.foto + '" alt="' + n.nombre + '" loading="lazy">';
+    }
+    const icono = ICONO_CATEGORIA[n.categoria] || "◈";
+    return '<span class="tarjeta__placeholder">' + icono + "</span>";
+  }
+
+  function pintarTarjetas(filtro) {
+    const cont = document.getElementById("tarjetas");
+    if (!cont) return;
+
+    const visibles = NEGOCIOS.filter(function (n) {
+      return filtro === "todos" || n.categoria === filtro;
+    });
+
+    cont.innerHTML = visibles.map(function (n) {
+      return (
+        '<article class="tarjeta">' +
+          '<div class="tarjeta__imagen">' +
+            pintarImagen(n) +
+            (n.destacado ? '<span class="tarjeta__insignia">Destacado</span>' : "") +
+            '<span class="tarjeta__km">' + n.km + "</span>" +
+          "</div>" +
+          '<div class="tarjeta__cuerpo">' +
+            '<h3 class="tarjeta__nombre">' + n.nombre + "</h3>" +
+            '<p class="tarjeta__desc">' + n.descripcion + "</p>" +
+            '<div class="tarjeta__datos">' + pintarDatos(n) + "</div>" +
+            '<div class="tarjeta__acciones">' + pintarAcciones(n) + "</div>" +
+          "</div>" +
+        "</article>"
+      );
+    }).join("");
+  }
+
+  function pintarFiltros() {
+    const cont = document.getElementById("filtros");
+    if (!cont) return;
+
+    cont.innerHTML = Object.keys(CATEGORIAS).map(function (clave, i) {
+      const cat = CATEGORIAS[clave];
+      return (
+        '<button class="filtro" role="tab" data-filtro="' + clave + '"' +
+        ' aria-selected="' + (i === 0) + '">' +
+          '<span class="filtro__icono" aria-hidden="true">' + cat.icono + "</span>" +
+          cat.etiqueta +
+        "</button>"
+      );
+    }).join("");
+
+    cont.addEventListener("click", function (e) {
+      const btn = e.target.closest(".filtro");
+      if (!btn) return;
+
+      cont.querySelectorAll(".filtro").forEach(function (b) {
+        b.setAttribute("aria-selected", String(b === btn));
+      });
+      pintarTarjetas(btn.dataset.filtro);
+    });
+  }
+
+  /* ── Aviso de datos pendientes ──────────────────────── */
+
+  function pintarAviso() {
+    const el = document.getElementById("aviso-datos");
+    if (!el) return;
+
+    const faltan = NEGOCIOS.filter(function (n) { return !tieneContacto(n); }).length;
+
+    if (faltan === 0) {
+      el.hidden = true;
+      return;
+    }
+
+    el.innerHTML =
+      "<strong>Estamos levantando los datos.</strong> " + faltan + " de " +
+      NEGOCIOS.length + " fichas todavía no tienen contacto confirmado. " +
+      "Preferimos dejarlas vacías antes que publicar un número equivocado: " +
+      "los estamos recogiendo negocio por negocio en el pueblo.";
+  }
+
+  /* ── Nav pegajosa ───────────────────────────────────── */
+
+  function navPegajosa() {
+    const nav = document.getElementById("nav");
+    if (!nav) return;
+
+    const alternar = function () {
+      nav.classList.toggle("nav--pegado", window.scrollY > 12);
+    };
+    alternar();
+    window.addEventListener("scroll", alternar, { passive: true });
+  }
+
+  /* ── Arranque ───────────────────────────────────────── */
+
+  pintarRuta();
+  pintarAtractivos();
+  pintarProxima();
+  pintarFiestas();
+  pintarFiltros();
+  pintarTarjetas("todos");
+  pintarAviso();
+  navPegajosa();
+})();

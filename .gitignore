@@ -1,0 +1,21 @@
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Node (por si más adelante se agregan dependencias)
+node_modules/
+npm-debug.log*
+
+# Fotos originales sin comprimir — pesan demasiado para el repo.
+# Sube solo las versiones ya reducidas a 1600px (ver docs/FOTOS.md).
+img/originales/
+*.RAW
+*.raw
+*.CR2
+*.NEF
