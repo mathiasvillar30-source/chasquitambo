@@ -147,11 +147,25 @@ const ATRACTIVOS = [
       "El cerro que le da forma al paisaje de Chasquitambo, llamado así porque su silueta recuerda a un pescado.",
   },
   {
-    nombre: "Iglesia colonial",
+    /* Una fuente local la describía como "iglesia colonial". La foto del pueblo
+       lo desmiente: es una iglesia moderna, de torres cilíndricas y cúpula
+       encalada. Se corrige el dato — manda la evidencia. */
+    nombre: "Iglesia de Chasquitambo",
     icono: "⛪",
     distancia: "Centro del pueblo",
+    foto: "iglesia.jpg",
+    credito: "Mathias Villar",
     texto:
-      "Arquitectura religiosa colonial en la plaza. Parada corta de diez minutos para quien va de paso.",
+      "Amarilla contra el cerro pelado, con torres cilíndricas, cúpula blanca y tejado de arcilla. En fiestas la visten con telas fucsia que se ven desde la plaza. Diez minutos bastan para verla, y es la parada natural del que baja del auto a estirar las piernas.",
+  },
+  {
+    nombre: "Plaza de Armas",
+    icono: "🌳",
+    distancia: "Centro del pueblo",
+    foto: "plaza.jpg",
+    credito: "Mathias Villar",
+    texto:
+      "El corazón del pueblo: jardines, pérgolas y el chasqui de piedra en el centro, ese mensajero inca que le dio nombre a Chasquitambo — el tambo donde paraba a descansar. Cuando hay fiesta se llena de banderines de lado a lado.",
   },
   {
     nombre: "Ruinas de Apac y Coricoto",
