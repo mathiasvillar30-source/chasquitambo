@@ -222,6 +222,41 @@
       "los estamos recogiendo negocio por negocio en el pueblo.";
   }
 
+  /* ── Menú móvil ─────────────────────────────────────── */
+
+  function menuMovil() {
+    const boton = document.getElementById("nav-menu");
+    const panel = document.getElementById("nav-enlaces");
+    if (!boton || !panel) return;
+
+    const abrir = function (si) {
+      boton.setAttribute("aria-expanded", String(si));
+      panel.classList.toggle("nav__enlaces--abierto", si);
+    };
+
+    boton.addEventListener("click", function () {
+      abrir(boton.getAttribute("aria-expanded") !== "true");
+    });
+
+    /* Al elegir una sección el menú estorba: se cierra solo. */
+    panel.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") abrir(false);
+    });
+
+    /* Clic fuera y tecla Escape también cierran. */
+    document.addEventListener("click", function (e) {
+      if (!panel.contains(e.target) && !boton.contains(e.target)) abrir(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") abrir(false);
+    });
+
+    /* Si se agranda la ventana, el panel vuelve a ser barra normal. */
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 720) abrir(false);
+    });
+  }
+
   /* ── Nav pegajosa ───────────────────────────────────── */
 
   function navPegajosa() {
@@ -244,5 +279,6 @@
   pintarFiltros();
   pintarTarjetas("todos");
   pintarAviso();
+  menuMovil();
   navPegajosa();
 })();
